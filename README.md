@@ -25,6 +25,30 @@ print(exchange.buy(26, 100, 0.00000001))       # Buy 100 dgc at .00000001 each
 print(exchange.cancel_all_market_orders(26))   # Cancels all orders in market 26, dgc
 ```
 
+High-Level API
+--------------
+
+Access crypsy API in a higher level:
+
+ * All int, floar and datetime objects are evaluated (and not only raw strings)
+ * Optional display all requests with response time
+ * Additional objects like:
+   * AccountBalance
+
+High-Level API Example
+----------------------
+```python
+from Cryptsy import HighLevelApi
+api = HighLevelApi(
+    your_api_key, your_secret,
+    verbose=True # display all requests with response time
+)
+balance = api.get_balance() # Get AccountBalance instance
+balance.print_balance() # print your balance
+
+print api.last_raw_result # print raw dict of last request
+```
+
 Changelog
 ---------
 Version 0.2:
